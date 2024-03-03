@@ -5,16 +5,17 @@
 \title{Create Legistar Web API Request with template}
 \usage{
 req_legistar(
-  template = "actions",
   ...,
-  client = getOption("legistarapi.client")
+  template = "actions",
+  client = getOption("legistarapi.client"),
+  call = caller_env()
 )
 }
 \arguments{
+\item{...}{Template variables.}
+
 \item{template}{A template string which consists of a optional HTTP method
 and a path containing variables labelled like either \verb{:foo} or \code{{foo}}.}
-
-\item{...}{Template variables.}
 }
 \description{
 Create Legistar Web API Request with template

@@ -2,7 +2,9 @@
 "_PACKAGE"
 
 ## usethis namespace: start
-#' @importFrom rlang caller_env
+#' @import rlang
 #' @import httr2
 ## usethis namespace: end
 NULL
+
+

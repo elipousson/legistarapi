@@ -6,6 +6,9 @@
 \usage{
 legistar(
   ...,
+  top = NULL,
+  skip = NULL,
+  .multi = "pipe",
   template = "actions",
   client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
@@ -14,6 +17,20 @@ legistar(
 }
 \arguments{
 \item{...}{Template variables.}
+
+\item{top, skip}{Passed to \code{\link[httr2:req_url]{httr2::req_url_query()}}}
+
+\item{.multi}{Controls what happens when an element of \code{...} is a vector
+containing multiple values:
+\itemize{
+\item \code{"error"}, the default, throws an error.
+\item \code{"comma"}, separates values with a \verb{,}, e.g. \verb{?x=1,2}.
+\item \code{"pipe"}, separates values with a \code{|}, e.g. \code{?x=1|2}.
+\item \code{"explode"}, turns each element into its own parameter, e.g. \code{?x=1&x=2}.
+}
+
+If none of these functions work, you can alternatively supply a function
+that takes a character vector and returns a string.}
 
 \item{template}{A template string which consists of a optional HTTP method
 and a path containing variables labelled like either \verb{:foo} or \code{{foo}}.}
