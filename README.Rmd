@@ -1,0 +1,49 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# legistarapi
+
+<!-- badges: start -->
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+<!-- badges: end -->
+
+The goal of legistarapi is to allow access to the Legistar Web API.
+
+## Installation
+
+You can install the development version of legistarapi like so:
+
+``` r
+# pak::pkg_install("elipousson/legistarapi")
+```
+
+## Example
+
+```{r setup}
+library(legistarapi)
+```
+
+Get persons using `legistar()`:
+
+```{r persons}
+legistar(template = "persons", client = "seattle")[1:10, ]
+```
+
+Or using the dedicated `legistar_get_persons()` function:
+
+```{r bodies}
+legistar_get_persons(client = "seattle")[1:10, ]
+```
