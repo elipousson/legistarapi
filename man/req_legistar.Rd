@@ -18,6 +18,7 @@ req_legistar(
 and a path containing variables labelled like either \verb{:foo} or \code{{foo}}.}
 }
 \description{
-Create Legistar Web API Request with template
+\code{req_legistar()} uses \code{request_legistar()} and \code{httr2::req_template()} to
+create a Legistar Web API Request.
 }
 \keyword{internal}
