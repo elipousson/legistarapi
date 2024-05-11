@@ -10,7 +10,6 @@
 #'   `actions = "{client}/Actions"`, `bodies = "{client}/Bodies"`,
 #'   or `code_sections = "{client}/CodeSections"`
 #' @keywords internal
-legistar_template <- function(template, method = "GET", version = 1) {
 #' @export
 legistar_template <- function(template = "actions", method = "GET", version = 1) {
   template <- switch (template,
