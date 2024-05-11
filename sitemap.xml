@@ -31,10 +31,16 @@
     <loc>https://elipousson.github.io/legistarapi/reference/legistar_template.html</loc>
   </url>
   <url>
+    <loc>https://elipousson.github.io/legistarapi/reference/legistar_url_id.html</loc>
+  </url>
+  <url>
     <loc>https://elipousson.github.io/legistarapi/reference/legistarapi-package.html</loc>
   </url>
   <url>
     <loc>https://elipousson.github.io/legistarapi/reference/req_legistar.html</loc>
+  </url>
+  <url>
+    <loc>https://elipousson.github.io/legistarapi/reference/req_odata_query.html</loc>
   </url>
   <url>
     <loc>https://elipousson.github.io/legistarapi/reference/request_legistar.html</loc>
