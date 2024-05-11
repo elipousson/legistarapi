@@ -70,7 +70,7 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://elipousson.github.io/legistarapi/">legistarapi</a></span><span class="op">)</span></span></code></pre></div>
 <p>Get persons using <code><a href="reference/legistar.html">legistar()</a></code>:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/legistar.html">legistar</a></span><span class="op">(</span>template <span class="op">=</span> <span class="st">"persons"</span>, client <span class="op">=</span> <span class="st">"seattle"</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/legistar.html">legistar</a></span><span class="op">(</span>template <span class="op">=</span> <span class="st">"persons"</span>, client <span class="op">=</span> <span class="st">"seattle"</span>, top <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    PersonId                           PersonGuid   PersonLastModifiedUtc</span></span>
 <span><span class="co">#&gt; 1       120 AB1EC5B5-4AFA-4B70-ADDE-C0ECA2C97FEF 2014-05-27T22:02:36.467</span></span>
 <span><span class="co">#&gt; 2       145 F07E7510-D2B5-4574-8F38-01552AD1B581 2014-05-27T22:02:36.467</span></span>
@@ -150,7 +150,7 @@
 <span><span class="co">#&gt; 10</span></span></code></pre></div>
 <p>Or using the dedicated <code><a href="reference/legistar_get.html">legistar_get_persons()</a></code> function:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/legistar_get.html">legistar_get_persons</a></span><span class="op">(</span>client <span class="op">=</span> <span class="st">"seattle"</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/legistar_get.html">legistar_get_persons</a></span><span class="op">(</span>client <span class="op">=</span> <span class="st">"seattle"</span>, top <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
 <span><span class="co">#&gt;    PersonId                           PersonGuid   PersonLastModifiedUtc</span></span>
 <span><span class="co">#&gt; 1       120 AB1EC5B5-4AFA-4B70-ADDE-C0ECA2C97FEF 2014-05-27T22:02:36.467</span></span>
 <span><span class="co">#&gt; 2       145 F07E7510-D2B5-4574-8F38-01552AD1B581 2014-05-27T22:02:36.467</span></span>
@@ -324,6 +324,99 @@
 <span><span class="co">#&gt; 8        NULL</span></span>
 <span><span class="co">#&gt; 9        NULL</span></span>
 <span><span class="co">#&gt; 10       NULL</span></span></code></pre></div>
+<p>Specific usage may vary by jurisdiction. One starting place is listing the Matter Types for a Legistar client site:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">matter_types</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/legistar.html">legistar</a></span><span class="op">(</span></span>
+<span>  client <span class="op">=</span> <span class="st">"baltimore"</span>,</span>
+<span>  template <span class="op">=</span> <span class="st">"matter_types"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">matter_types</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 'data.frame':    5 obs. of  9 variables:</span></span>
+<span><span class="co">#&gt;  $ MatterTypeId             : int  1 2 3 7 10</span></span>
+<span><span class="co">#&gt;  $ MatterTypeGuid           : chr  "B224BB48-EF8C-4F9C-AA78-5C15A942344A" "E6C16D0D-13DD-4307-95DF-8F8F3E644CDA" "7D89AEED-060E-4F12-91FA-9BF0F23241B3" "7D933938-76F2-44F8-AA20-3BABEA4CACB1" ...</span></span>
+<span><span class="co">#&gt;  $ MatterTypeLastModifiedUtc: chr  "2015-02-11T21:05:37.437" "2015-02-11T21:05:37.437" "2015-02-11T21:05:37.437" "2015-02-11T21:05:37.437" ...</span></span>
+<span><span class="co">#&gt;  $ MatterTypeRowVersion     : chr  "AAAAAAAAG0o=" "AAAAAAAAG0s=" "AAAAAAAAG0w=" "AAAAAAAAG00=" ...</span></span>
+<span><span class="co">#&gt;  $ MatterTypeName           : chr  "Ordinance" "City Council Resolution" "Executive Nomination" "Mayor and City Council Res." ...</span></span>
+<span><span class="co">#&gt;  $ MatterTypeSort           : int  1 3 6 2 10</span></span>
+<span><span class="co">#&gt;  $ MatterTypeActiveFlag     : int  1 1 1 1 1</span></span>
+<span><span class="co">#&gt;  $ MatterTypeDescription    : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterTypeUsedFlag       : int  0 0 0 0 0</span></span></code></pre></div>
+<p>For Baltimore City, the “Ordinance” Matter Type has a ID value of 1. We can use the filter parameter to return a data frame of ordinances:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ordinances</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/legistar.html">legistar</a></span><span class="op">(</span></span>
+<span>  client <span class="op">=</span> <span class="st">"baltimore"</span>,</span>
+<span>  template <span class="op">=</span> <span class="st">"matters"</span>,</span>
+<span>  top <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  filter <span class="op">=</span> <span class="st">"MatterTypeId eq 1"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">ordinances</span><span class="op">)</span></span>
+<span><span class="co">#&gt; 'data.frame':    10 obs. of  54 variables:</span></span>
+<span><span class="co">#&gt;  $ MatterId                : int  3 4 5 6 15 16 18 19 20 21</span></span>
+<span><span class="co">#&gt;  $ MatterGuid              : chr  "9AF691E4-2E63-4768-A96B-00AF70AF08F2" "1B196F20-7FDE-4CF6-A351-E9351ABFD235" "B4FF2D89-9B7E-4093-95E5-65E6D9AC7ADB" "04F5943B-502E-421D-9CA5-B496410307B5" ...</span></span>
+<span><span class="co">#&gt;  $ MatterLastModifiedUtc   : chr  NA "2019-07-22T18:50:14.367" "2015-09-17T14:47:11.743" "2015-09-17T14:47:10.61" ...</span></span>
+<span><span class="co">#&gt;  $ MatterRowVersion        : chr  "AAAAAAATHGE=" "AAAAAAA3+gs=" "AAAAAAATHGU=" "AAAAAAATHGc=" ...</span></span>
+<span><span class="co">#&gt;  $ MatterFile              : chr  "200002" "200003" "200004" "200005" ...</span></span>
+<span><span class="co">#&gt;  $ MatterName              : chr  "Zoning - General Advertising Signs" "Zoning - Conditional Use Housing for the Elderly - 607 Pennsylvania Avenue" "Zoning - Conditional Use Open Off-Street Parking Area - 1610-1614 Druid Hill Avenue" "Zoning - Conditional Use Convalescent, Nursing, and Rest Home (Assisted Living) - 300 Lyndhurst Street" ...</span></span>
+<span><span class="co">#&gt;  $ MatterTitle             : chr  "FOR the purpose of establishing a general prohibition on the issuance of permits and the construction of genera"| __truncated__ "FOR the purpose of permitting, subject to certain conditions, the establishment, maintenance, and operation of "| __truncated__ "FOR the purpose of permitting, subject to certain conditions, the establishment, maintenance, and operation of "| __truncated__ "FOR the purpose of permitting, subject to certain conditions, the establishment, maintenance, and operation of "| __truncated__ ...</span></span>
+<span><span class="co">#&gt;  $ MatterTypeId            : int  1 1 1 1 1 1 1 1 1 1</span></span>
+<span><span class="co">#&gt;  $ MatterTypeName          : chr  "Ordinance" "Ordinance" "Ordinance" "Ordinance" ...</span></span>
+<span><span class="co">#&gt;  $ MatterStatusId          : int  18 18 18 10 10 10 27 27 18 18</span></span>
+<span><span class="co">#&gt;  $ MatterStatusName        : chr  "Enacted" "Enacted" "Enacted" "Withdrawn" ...</span></span>
+<span><span class="co">#&gt;  $ MatterBodyId            : int  1 1 1 1 1 1 1 1 1 1</span></span>
+<span><span class="co">#&gt;  $ MatterBodyName          : chr  "City Council" "City Council" "City Council" "City Council" ...</span></span>
+<span><span class="co">#&gt;  $ MatterIntroDate         : chr  "1999-12-09T00:00:00" "1999-12-09T00:00:00" "1999-12-09T00:00:00" "1999-12-09T00:00:00" ...</span></span>
+<span><span class="co">#&gt;  $ MatterAgendaDate        : chr  "2000-04-04T00:00:00" "2000-06-05T00:00:00" "2000-04-17T00:00:00" "2001-01-22T00:00:00" ...</span></span>
+<span><span class="co">#&gt;  $ MatterPassedDate        : chr  "2000-03-27T00:00:00" "2000-05-30T00:00:00" "2000-04-13T00:00:00" "2001-01-22T00:00:00" ...</span></span>
+<span><span class="co">#&gt;  $ MatterEnactmentDate     : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEnactmentNumber   : chr  "00-1" "00-16" "00-8" NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterRequester         : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterNotes             : chr  NA "{\\rtf1\\ansi\\ansicpg1252\\deff0{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}\r\n\\viewkind4\\uc1\\pard\\lang1033\"| __truncated__ "{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}\r\n\\viewkind4\\uc1\\pard\\lang1033\\fs20 YMCA of"| __truncated__ "{\\rtf1\\ansi\\deff0{\\fonttbl{\\f0\\fnil\\fcharset0 Arial;}}\r\n\\viewkind4\\uc1\\pard\\lang1033\\fs20 Hartens"| __truncated__ ...</span></span>
+<span><span class="co">#&gt;  $ MatterVersion           : chr  "0" "0" "0" "0" ...</span></span>
+<span><span class="co">#&gt;  $ MatterCost              : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterText1             : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterText2             : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterText3             : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterText4             : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterText5             : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterDate1             : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterDate2             : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXText1           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXText2           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXText3           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXText4           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXText5           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXText6           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXText7           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXText8           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXText9           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXText10          : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXText11          : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate1           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate2           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate3           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate4           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate5           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate6           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate7           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate8           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate9           : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate10          : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterAgiloftId         : int  0 0 0 0 0 0 0 0 0 0</span></span>
+<span><span class="co">#&gt;  $ MatterReference         : chr  "00-0002" "00-0003" "00-0004" "00-0005" ...</span></span>
+<span><span class="co">#&gt;  $ MatterRestrictViewViaWeb: logi  FALSE FALSE FALSE FALSE FALSE FALSE ...</span></span>
+<span><span class="co">#&gt;  $ MatterReports           :List of 10</span></span>
+<span><span class="co">#&gt;   ..$ : list()</span></span>
+<span><span class="co">#&gt;   ..$ : list()</span></span>
+<span><span class="co">#&gt;   ..$ : list()</span></span>
+<span><span class="co">#&gt;   ..$ : list()</span></span>
+<span><span class="co">#&gt;   ..$ : list()</span></span>
+<span><span class="co">#&gt;   ..$ : list()</span></span>
+<span><span class="co">#&gt;   ..$ : list()</span></span>
+<span><span class="co">#&gt;   ..$ : list()</span></span>
+<span><span class="co">#&gt;   ..$ : list()</span></span>
+<span><span class="co">#&gt;   ..$ : list()</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="related-projects">Related projects<a class="anchor" aria-label="anchor" href="#related-projects"></a>
