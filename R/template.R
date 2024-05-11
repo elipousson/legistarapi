@@ -1,13 +1,18 @@
-#' Set Legistar Web API URL GET Template
+#' Get a Legistar Web API URL GET Template
 #'
 #' Review the [Legistar Web API](https://webapi.legistar.com/) documentation for
-#' more information.
+#' more information. See [this reference Google
+#' Sheet](https://docs.google.com/spreadsheets/d/1Py-Oqyb8kW13x0_BjGJS-fw1EdZzqBeIsjxvQvBV5dM/edit?usp=sharing)
+#' to see the URL patterns. A function to list the templates with definitions
+#' for the purpose of each endpoint will be added in the future.
 #'
 #' @param template Template string corresponding to a template endpoint, e.g.
 #'   `actions = "{client}/Actions"`, `bodies = "{client}/Bodies"`,
 #'   or `code_sections = "{client}/CodeSections"`
 #' @keywords internal
 legistar_template <- function(template, method = "GET", version = 1) {
+#' @export
+legistar_template <- function(template = "actions", method = "GET", version = 1) {
   template <- switch (template,
           actions = "{client}/Actions",
           actions_action_id = "{client}/Actions/{action_id}",
