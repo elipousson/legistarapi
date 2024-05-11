@@ -8,10 +8,15 @@ legistar(
   ...,
   top = NULL,
   skip = NULL,
+  select = NULL,
+  filter = NULL,
+  orderby = NULL,
+  inlinecount = NULL,
   .multi = "pipe",
   template = "actions",
   client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
+  n_max = NULL,
   error_call = caller_env()
 )
 }
@@ -40,6 +45,8 @@ and a path containing variables labelled like either \verb{:foo} or \code{{foo}}
 \item{simplifyVector}{Should JSON arrays containing only primitives (i.e.
 booleans, numbers, and strings) be caused to atomic vectors?}
 
+\item{n_max}{Maximum number of records to return. Currently unsupported.}
+
 \item{error_call}{The execution environment of a currently
 running function, e.g. \code{caller_env()}. The function will be
 mentioned in error messages as the source of the error. See the
@@ -47,7 +54,8 @@ mentioned in error messages as the source of the error. See the
 }
 \description{
 Review the \href{https://webapi.legistar.com/}{Legistar Web API} documentation for
-more information.
+more information. This function is a work in progress. As of May 2024, it
+returns all results for any query calling itself recursively.
 }
 \examples{
 legistar(template = "persons", client = "seattle")

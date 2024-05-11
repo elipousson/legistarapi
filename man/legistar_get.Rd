@@ -18,90 +18,106 @@
 \title{Get Legistar records}
 \usage{
 legistar_get_actions(
+  ...,
   client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
   error_call = caller_env()
 )
 
 legistar_get_persons(
+  ...,
   client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
   error_call = caller_env()
 )
 
 legistar_get_bodies(
+  ...,
   client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
   error_call = caller_env()
 )
 
 legistar_get_body_types(
+  ...,
   client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
   error_call = caller_env()
 )
 
 legistar_get_code_sections(
+  ...,
   client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
   error_call = caller_env()
 )
 
 legistar_get_events(
+  ...,
   client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
   error_call = caller_env()
 )
 
 legistar_get_indexes(
+  ...,
   client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
   error_call = caller_env()
 )
 
 legistar_get_matter_requesters(
+  ...,
   client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
   error_call = caller_env()
 )
 
 legistar_get_matter_requesters(
+  ...,
   client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
   error_call = caller_env()
 )
 
 legistar_get_matters(
+  ...,
   client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
   error_call = caller_env()
 )
 
 legistar_get_matter_statuses(
+  ...,
   client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
   error_call = caller_env()
 )
 
 legistar_get_matter_types(
+  ...,
   client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
   error_call = caller_env()
 )
 
 legistar_get_office_records(
+  ...,
   client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
   error_call = caller_env()
 )
 
 legistar_get_vote_types(
+  ...,
   client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
   error_call = caller_env()
 )
 }
 \arguments{
+\item{...}{Template variables.}
+
 \item{client}{String with Legistar client name}
 
 \item{simplifyVector}{Should JSON arrays containing only primitives (i.e.

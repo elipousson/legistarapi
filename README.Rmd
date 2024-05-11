@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 <!-- badges: end -->
 
-The goal of legistarapi is to allow access to the Legistar Web API.
+The goal of legistarapi is to allow access to the [Legistar Web API](https://webapi.legistar.com/). [Legistar](https://granicus.com/solution/govmeetings/legistar/) is "agenda and legislative management software for large municipalities and counties" supplied by Granicus. According to [promotional material](https://granicus.com/pdfs/product_legistar.pdf), Legistar is used by 70% of the largest cities and counties in the U.S.
 
 ## Installation
 
@@ -47,3 +47,21 @@ Or using the dedicated `legistar_get_persons()` function:
 ```{r bodies}
 legistar_get_persons(client = "seattle")[1:10, ]
 ```
+
+The Legistar Web API has at least partial support for the [OData Version 3.0](https://www.odata.org/documentation/odata-version-3-0/odata-version-3-0-core-protocol/) URL conventions. Support for these conventions is incomplete but the `top` and `orderby` query parameters are available:
+
+```{r}
+legistar(
+  client = "baltimore",
+  template = "events",
+  top = 10,
+  orderby = "EventDate"
+)
+```
+
+## Related projects
+
+- [Python Legistar Scraper](https://github.com/opencivicdata/python-legistar-scraper)
+- [scrapers-us-municipal](https://github.com/opencivicdata/scrapers-us-municipal) (Scrapers for US municipal governments)
+- [Council Data Project](https://councildataproject.org/)
+- [cdp-scrapers](https://councildataproject.org/cdp-scrapers/index.html) (Scratchpad for scraper development and general utilities for the Council Data Project)

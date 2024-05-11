@@ -2,9 +2,9 @@
 % Please edit documentation in R/template.R
 \name{legistar_template}
 \alias{legistar_template}
-\title{Set Legistar Web API URL GET Template}
+\title{Get a Legistar Web API URL GET Template}
 \usage{
-legistar_template(template, method = "GET", version = 1)
+legistar_template(template = "actions", method = "GET", version = 1)
 }
 \arguments{
 \item{template}{Template string corresponding to a template endpoint, e.g.
@@ -13,6 +13,8 @@ or \code{code_sections = "{client}/CodeSections"}}
 }
 \description{
 Review the \href{https://webapi.legistar.com/}{Legistar Web API} documentation for
-more information.
+more information. See \href{https://docs.google.com/spreadsheets/d/1Py-Oqyb8kW13x0_BjGJS-fw1EdZzqBeIsjxvQvBV5dM/edit?usp=sharing}{this reference Google Sheet}
+to see the URL patterns. A function to list the templates with definitions
+for the purpose of each endpoint will be added in the future.
 }
 \keyword{internal}
