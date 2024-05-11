@@ -39,13 +39,13 @@ library(legistarapi)
 Get persons using `legistar()`:
 
 ```{r persons}
-legistar(template = "persons", client = "seattle")[1:10, ]
+legistar(template = "persons", client = "seattle", top = 10)
 ```
 
 Or using the dedicated `legistar_get_persons()` function:
 
 ```{r bodies}
-legistar_get_persons(client = "seattle")[1:10, ]
+legistar_get_persons(client = "seattle", top = 10)
 ```
 
 The Legistar Web API has at least partial support for the [OData Version 3.0](https://www.odata.org/documentation/odata-version-3-0/odata-version-3-0-core-protocol/) URL conventions. Support for these conventions is incomplete but the `top` and `orderby` query parameters are available:
@@ -57,6 +57,30 @@ legistar(
   top = 10,
   orderby = "EventDate"
 )
+```
+
+Specific usage may vary by jurisdiction. One starting place is listing the Matter Types for a Legistar client site:
+
+```{r}
+matter_types <- legistar(
+  client = "baltimore",
+  template = "matter_types"
+)
+
+str(matter_types)
+```
+
+For Baltimore City, the "Ordinance" Matter Type has a ID value of 1. We can use the filter parameter to return a data frame of ordinances:
+
+```{r}
+ordinances <- legistar(
+  client = "baltimore",
+  template = "matters",
+  top = 10,
+  filter = "MatterTypeId eq 1"
+)
+
+str(ordinances)
 ```
 
 ## Related projects
