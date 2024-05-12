@@ -34,9 +34,32 @@ req_odata_query <- function(
     filter = NULL,
     select = NULL,
     orderby = NULL,
+    direction = NULL,
+    count = NULL,
     inlinecount = NULL,
-    .multi = "pipe",
+    .multi = "comma",
     error_call = caller_env()) {
+  check_string(orderby, allow_empty = FALSE, allow_null = TRUE, call = error_call)
+  check_character(select, allow_null = TRUE, call = error_call)
+
+  if (!is.null(direction)) {
+    direction <- arg_match0(direction, c("asc", "desc"), error_call = error_call)
+    orderby <- paste(orderby, direction)
+  }
+
+  if (!is.null(count)) {
+    check_logical(count, call = error_call)
+    count <- tolower(count)
+  }
+
+  if (!is.null(inlinecount)) {
+    inlinecount <- arg_match0(
+      inlinecount,
+      c("allpages", "none"),
+      error_call = error_call
+    )
+  }
+
   # See examples for syntax https://webapi.legistar.com/Home/Examples
   params <- list2(
     "$top" = top,
@@ -45,6 +68,7 @@ req_odata_query <- function(
     "$select" = select,
     "$orderby" = orderby,
     "$inlinecount" = inlinecount,
+    "$count" = count,
     ...
   )
 
@@ -142,30 +166,38 @@ resp_legistar <- function(
 #' returns all results for any query calling itself recursively.
 #'
 #' @seealso [legistar_template()]
-#' @param client String with Legistar client name
+#' @param client String with Legistar client name. Defaults to
+#'   `getOption("legistarapi.client")`.
 #' @inheritParams req_legistar
 #' @inheritParams httr2::req_perform
-#' @param top,skip Passed to [httr2::req_url_query()]
+#' @param top,skip,select,filter,orderby Passed to internal [req_odata_query()]
+#'   function.
+#' @param direction Default `NULL`. Use `"asc"` for ascending or `"desc"` for
+#'   descending sort order based on `orderby` argument. Ignored if `orderby` is
+#'   not supplied.
+#' @param count,inlinecount Currently unsupported.
 #' @param n_max Maximum number of records to return. Currently unsupported.
 #' @inheritParams httr2::req_url_query
 #' @inheritParams resp_legistar
 #' @examples
-#' legistar(template = "persons", client = "seattle")
+#' legistar(template = "persons", client = "seattle", top = 5)
 #'
-#' legistar(template = "bodies", client = "baltimore")
+#' legistar(template = "bodies", client = "baltimore", top = 5)
 #'
 #' @export
 #' @importFrom rlang list2
 legistar <- function(...,
+                     template = "actions",
+                     client = getOption("legistarapi.client"),
                      top = NULL,
                      skip = NULL,
                      select = NULL,
                      filter = NULL,
                      orderby = NULL,
+                     direction = NULL,
+                     count = NULL,
                      inlinecount = NULL,
                      .multi = "pipe",
-                     template = "actions",
-                     client = getOption("legistarapi.client"),
                      simplifyVector = TRUE,
                      n_max = NULL,
                      error_call = caller_env()) {
@@ -176,14 +208,6 @@ legistar <- function(...,
     call = error_call
   )
 
-  if (!is.null(inlinecount)) {
-    inlinecount <- arg_match0(
-      inlinecount,
-      c("allpages", "none"),
-      error_call = error_call
-    )
-  }
-
   req <- req_odata_query(
     req,
     top = top,
@@ -191,12 +215,19 @@ legistar <- function(...,
     select = select,
     filter = filter,
     orderby = orderby,
-    inlinecount = inlinecount
+    direction = direction,
+    inlinecount = inlinecount,
+    count = count,
+    error_call = error_call
   )
 
   resp <- httr2::req_perform(req, error_call = error_call)
 
   body <- resp_legistar(resp, simplifyVector = simplifyVector)
+
+  if (is_true(count)) {
+    return(body)
+  }
 
   # FIXME: Recursive multipage calls currently not supported if `simplifyVector
   # = FALSE`
