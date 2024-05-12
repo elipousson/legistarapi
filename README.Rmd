@@ -39,13 +39,13 @@ library(legistarapi)
 This easiest way to access Legistar data is using the dedicated functions that correspond to different types of information. For example, list Legistar users for a client using the `legis_get_persons()` function:
 
 ```{r bodies}
-legis_get_persons(client = "seattle", top = 10)
+legis_get_persons(client = "seattle", top = 5)
 ```
 
 The Legistar Web API has at least partial support for the [OData Version 3.0](https://www.odata.org/documentation/odata-version-3-0/odata-version-3-0-core-protocol/) URL conventions. Support for these conventions is incomplete but the `top`, `orderby`,  `select`, and `filter` query parameters are supported: 
 
 ```{r}
-legis_get_persons(client = "seattle", top = 10, orderby = "PersonFullName", order = "asc", select = c("PersonFirstName", "PersonLastName", "PersonFullName"))
+legis_get_persons(client = "seattle", top = 5, orderby = "PersonFullName", order = "asc", select = c("PersonFirstName", "PersonLastName", "PersonFullName"))
 ```
 
 The functions starting with `legis_get_` are wrappers for the lower-level `legistar()` function. Using the `template` parameter, you can access the same data:
@@ -79,7 +79,7 @@ For Baltimore City, the "Ordinance" Matter Type has a ID value of 1. We can use 
 ordinances <- legistar(
   client = "baltimore",
   template = "matters",
-  top = 10,
+  top = 5,
   filter = "MatterTypeId eq 1",
   orderby = "MatterPassedDate",
   direction = "desc"
@@ -91,6 +91,8 @@ str(ordinances)
 ## Related projects
 
 - [Python Legistar Scraper](https://github.com/opencivicdata/python-legistar-scraper)
-- [scrapers-us-municipal](https://github.com/opencivicdata/scrapers-us-municipal) (Scrapers for US municipal governments)
+- [scrapers-us-municipal](https://github.com/opencivicdata/scrapers-us-municipal): Scrapers for US municipal governments
 - [Council Data Project](https://councildataproject.org/)
-- [cdp-scrapers](https://councildataproject.org/cdp-scrapers/index.html) (Scratchpad for scraper development and general utilities for the Council Data Project)
+- [cdp-scrapers](https://councildataproject.org/cdp-scrapers/index.html): Scratchpad for scraper development and general utilities for the Council Data Project
+- [legistar-rs](https://github.com/Subzidion/legistar-rs): Rust library to access the Legistar Web API.
+- [civic-scraper](https://github.com/biglocalnews/civic-scraper): Tools for downloading agendas, minutes and other documents produced by local government

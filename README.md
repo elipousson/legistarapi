@@ -39,84 +39,43 @@ example, list Legistar users for a client using the
 `legis_get_persons()` function:
 
 ``` r
-legis_get_persons(client = "seattle", top = 10)
-#>    PersonId                           PersonGuid   PersonLastModifiedUtc
-#> 1       120 AB1EC5B5-4AFA-4B70-ADDE-C0ECA2C97FEF 2014-05-27T22:02:36.467
-#> 2       145 F07E7510-D2B5-4574-8F38-01552AD1B581 2014-05-27T22:02:36.467
-#> 3       169 2D8E1621-3625-4BAC-BD75-762C720B3085 2014-05-27T22:02:36.467
-#> 4       173 54718D76-B468-43BF-B935-7266D9261349 2014-05-27T22:02:36.467
-#> 5       175 02FCAD3D-B104-412C-8566-99184F91BAFB 2014-05-27T22:02:36.467
-#> 6       177 F53C87FD-BB0A-450F-BA21-C8B872691D0F 2014-05-27T22:02:36.467
-#> 7       179 783B6BB6-54A6-4571-AD3D-4DB9C0DB3761 2014-05-27T22:02:36.467
-#> 8       183 D304D3B5-4ADF-4854-BF8A-8FE368533E2C 2014-05-27T22:02:36.467
-#> 9       184 996E5D3F-C893-426E-83C7-54D063684852 2014-05-27T22:02:36.467
-#> 10      185 B9D0E861-3EC2-452D-A527-B63164F888FA 2014-05-27T22:02:36.467
-#>    PersonRowVersion PersonFirstName PersonLastName  PersonFullName
-#> 1      AAAAAAD1y1A=                        Daystar         Daystar
-#> 2      AAAAAAArSwM=            View           Only       View Only
-#> 3      AAAAAAArSwQ=        Legistar         System Legistar System
-#> 4      AAAAAAEF4+U=             Ian          Smith       Ian Smith
-#> 5      AAAAAAEIIHs=          Emilia        Sanchez  Emilia Sanchez
-#> 6      AAAAAAA0ujY=           Julie          Tobin     Julie Tobin
-#> 7      AAAAAABB7YY=             Jon       Johansen    Jon Johansen
-#> 8      AAAAAAEAfYM=           Sally        Bagshaw   Sally Bagshaw
-#> 9      AAAAAAEAfYo=             Tim        Burgess     Tim Burgess
-#> 10     AAAAAAEB0kw=            Jean         Godden     Jean Godden
-#>    PersonActiveFlag PersonCanViewFlag PersonUsedSponsorFlag
-#> 1                 0                 0                     0
-#> 2                 1                 0                     0
-#> 3                 1                 0                     0
-#> 4                 1                 1                     0
-#> 5                 1                 1                     0
-#> 6                 1                 1                     0
-#> 7                 1                 1                     0
-#> 8                 0                 1                     0
-#> 9                 0                 1                     0
-#> 10                0                 1                     0
-#>                               PersonAddress1 PersonCity1 PersonState1
-#> 1                                                                    
-#> 2                                                   <NA>         <NA>
-#> 3                                       <NA>        <NA>         <NA>
-#> 4                                                                    
-#> 5                                                                    
-#> 6                                                                    
-#> 7                                                                    
-#> 8  Seattle City Hall, 600 Fourth Ave, 2nd fl     Seattle           WA
-#> 9                                                                    
-#> 10                                                                   
-#>    PersonZip1  PersonPhone    PersonFax                PersonEmail
-#> 1                                            Legistar@granicus.com
-#> 2        <NA>                                                     
-#> 3        <NA>         <NA>         <NA>                       <NA>
-#> 4                                            Ian.Smith@seattle.gov
-#> 5                                       Emilia.Sanchez@seattle.gov
-#> 6                                          julie.tobin@seattle.gov
-#> 7                                                 ats@granicus.com
-#> 8       98104 206-684-8801 206-684-8587  sally.bagshaw@seattle.gov
-#> 9             206-684-8806 206-684-8587    tim.burgess@seattle.gov
-#> 10            206-684-8807 206-684-8587    jean.godden@seattle.gov
-#>                                  PersonWWW PersonAddress2 PersonCity2
-#> 1                                                                    
-#> 2                                                    <NA>        <NA>
-#> 3                                     <NA>           <NA>        <NA>
-#> 4                                                                    
-#> 5                                                                    
-#> 6                                                                    
-#> 7                                                                    
-#> 8  http://www.seattle.gov/council/bagshaw/                           
-#> 9  http://www.seattle.gov/council/burgess/                           
-#> 10  http://www.seattle.gov/council/godden/                           
-#>    PersonState2 PersonZip2 PersonPhone2 PersonFax2 PersonEmail2 PersonWWW2
-#> 1                                                                         
-#> 2          <NA>       <NA>         <NA>       <NA>         <NA>       <NA>
-#> 3          <NA>       <NA>         <NA>       <NA>         <NA>       <NA>
-#> 4                                                                         
-#> 5                                                                         
-#> 6                                                                         
-#> 7                                                                         
-#> 8                                                                         
-#> 9                                                                         
-#> 10
+legis_get_persons(client = "seattle", top = 5)
+#>   PersonId                           PersonGuid   PersonLastModifiedUtc
+#> 1      120 AB1EC5B5-4AFA-4B70-ADDE-C0ECA2C97FEF 2014-05-27T22:02:36.467
+#> 2      145 F07E7510-D2B5-4574-8F38-01552AD1B581 2014-05-27T22:02:36.467
+#> 3      169 2D8E1621-3625-4BAC-BD75-762C720B3085 2014-05-27T22:02:36.467
+#> 4      173 54718D76-B468-43BF-B935-7266D9261349 2014-05-27T22:02:36.467
+#> 5      175 02FCAD3D-B104-412C-8566-99184F91BAFB 2014-05-27T22:02:36.467
+#>   PersonRowVersion PersonFirstName PersonLastName  PersonFullName
+#> 1     AAAAAAD1y1A=                        Daystar         Daystar
+#> 2     AAAAAAArSwM=            View           Only       View Only
+#> 3     AAAAAAArSwQ=        Legistar         System Legistar System
+#> 4     AAAAAAEF4+U=             Ian          Smith       Ian Smith
+#> 5     AAAAAAEIIHs=          Emilia        Sanchez  Emilia Sanchez
+#>   PersonActiveFlag PersonCanViewFlag PersonUsedSponsorFlag PersonAddress1
+#> 1                0                 0                     0               
+#> 2                1                 0                     0               
+#> 3                1                 0                     0           <NA>
+#> 4                1                 1                     0               
+#> 5                1                 1                     0               
+#>   PersonCity1 PersonState1 PersonZip1 PersonPhone PersonFax
+#> 1                                                          
+#> 2        <NA>         <NA>       <NA>                      
+#> 3        <NA>         <NA>       <NA>        <NA>      <NA>
+#> 4                                                          
+#> 5                                                          
+#>                  PersonEmail PersonWWW PersonAddress2 PersonCity2 PersonState2
+#> 1      Legistar@granicus.com                                                  
+#> 2                                                <NA>        <NA>         <NA>
+#> 3                       <NA>      <NA>           <NA>        <NA>         <NA>
+#> 4      Ian.Smith@seattle.gov                                                  
+#> 5 Emilia.Sanchez@seattle.gov                                                  
+#>   PersonZip2 PersonPhone2 PersonFax2 PersonEmail2 PersonWWW2
+#> 1                                                           
+#> 2       <NA>         <NA>       <NA>         <NA>       <NA>
+#> 3       <NA>         <NA>       <NA>         <NA>       <NA>
+#> 4                                                           
+#> 5
 ```
 
 The Legistar Web API has at least partial support for the [OData Version
@@ -125,18 +84,13 @@ URL conventions. Support for these conventions is incomplete but the
 `top`, `orderby`, `select`, and `filter` query parameters are supported:
 
 ``` r
-legis_get_persons(client = "seattle", top = 10, orderby = "PersonFullName", order = "asc", select = c("PersonFirstName", "PersonLastName", "PersonFullName"))
-#>           PersonFullName PersonLastName PersonFirstName
-#> 1       Aaron Blumenthal     Blumenthal           Aaron
-#> 2        Aaron Pritchard      Pritchard           Aaron
-#> 3           Abel Pacheco        Pacheco            Abel
-#> 4          Abigail Doerr          Doerr         Abigail
-#> 5          Adam Schaefer       Schaefer            Adam
-#> 6        Adam Ziemkowski     Ziemkowski            Adam
-#> 7  admDepusoy admDepusoy     admDepusoy      admDepusoy
-#> 8          admGee admGee         admGee          admGee
-#> 9  admSanchez admSanchez     admSanchez      admSanchez
-#> 10     admSmith admSmith       admSmith        admSmith
+legis_get_persons(client = "seattle", top = 5, orderby = "PersonFullName", order = "asc", select = c("PersonFirstName", "PersonLastName", "PersonFullName"))
+#>     PersonFullName PersonLastName PersonFirstName
+#> 1 Aaron Blumenthal     Blumenthal           Aaron
+#> 2  Aaron Pritchard      Pritchard           Aaron
+#> 3     Abel Pacheco        Pacheco            Abel
+#> 4    Abigail Doerr          Doerr         Abigail
+#> 5    Adam Schaefer       Schaefer            Adam
 ```
 
 The functions starting with `legis_get_` are wrappers for the
@@ -231,73 +185,68 @@ can use the filter parameter to return a data frame of ordinances:
 ordinances <- legistar(
   client = "baltimore",
   template = "matters",
-  top = 10,
+  top = 5,
   filter = "MatterTypeId eq 1",
   orderby = "MatterPassedDate",
   direction = "desc"
 )
 
 str(ordinances)
-#> 'data.frame':    10 obs. of  54 variables:
-#>  $ MatterId                : int  9269 9380 9548 9570 9577 9584 9585 9591 9602 9650
+#> 'data.frame':    5 obs. of  54 variables:
+#>  $ MatterId                : int  9269 9380 9548 9570 9577
 #>  $ MatterGuid              : chr  "CCF500CC-21E6-4A9F-9248-4532D4CAE9DB" "4BF92EB4-6ECF-451B-AB54-BCE01B3E9AB6" "0B4764EC-F36A-4EC9-BF41-AC41F64AA743" "F19536EC-63D8-4269-BDFF-8A089B770440" ...
 #>  $ MatterLastModifiedUtc   : chr  "2024-05-07T19:55:56.69" "2024-05-07T19:56:17.353" "2024-05-07T19:56:39.28" "2024-05-07T20:03:07.207" ...
 #>  $ MatterRowVersion        : chr  "AAAAAACDc9U=" "AAAAAACDc/4=" "AAAAAACDdCM=" "AAAAAACDdlk=" ...
 #>  $ MatterFile              : chr  "22-0301" "23-0351" "23-0416" "23-0427" ...
 #>  $ MatterName              : chr  "Sale of Property - 844 Roundview Road" "Rezoning - 1801 to 1807 Bloomingdale Road and 1800 to 1816 North Rosedale Street" "Baltimore City Office of Returning Citizens" "Baltimore Police Department - Trauma-Informed Care Training" ...
 #>  $ MatterTitle             : chr  "Sale of Property - 844 Roundview Road\r\nFor the purpose of authorizing the Mayor and City Council of Baltimore"| __truncated__ "Rezoning - 1801 to 1807 Bloomingdale Road and 1800 to 1816 North Rosedale Street\r\nFor the purpose of changing"| __truncated__ "Baltimore City Office of Returning Citizens\r\nFor the purpose of establishing a Baltimore City Office of Retur"| __truncated__ "Baltimore Police Department - Trauma-Informed Care Training\r\nFor the purpose of adding the Baltimore Police D"| __truncated__ ...
-#>  $ MatterTypeId            : int  1 1 1 1 1 1 1 1 1 1
+#>  $ MatterTypeId            : int  1 1 1 1 1
 #>  $ MatterTypeName          : chr  "Ordinance" "Ordinance" "Ordinance" "Ordinance" ...
-#>  $ MatterStatusId          : int  18 18 18 18 18 18 18 18 18 18
+#>  $ MatterStatusId          : int  18 18 18 18 18
 #>  $ MatterStatusName        : chr  "Enacted" "Enacted" "Enacted" "Enacted" ...
-#>  $ MatterBodyId            : int  3 3 3 3 3 3 3 3 3 3
+#>  $ MatterBodyId            : int  3 3 3 3 3
 #>  $ MatterBodyName          : chr  "Baltimore City Council" "Baltimore City Council" "Baltimore City Council" "Baltimore City Council" ...
 #>  $ MatterIntroDate         : chr  "2022-11-21T00:00:00" "2023-02-06T00:00:00" "2023-08-21T00:00:00" "2023-09-18T00:00:00" ...
-#>  $ MatterAgendaDate        : logi  NA NA NA NA NA NA ...
+#>  $ MatterAgendaDate        : logi  NA NA NA NA NA
 #>  $ MatterPassedDate        : chr  "2024-04-24T00:00:00" "2024-04-24T00:00:00" "2024-04-24T00:00:00" "2024-04-24T00:00:00" ...
-#>  $ MatterEnactmentDate     : logi  NA NA NA NA NA NA ...
+#>  $ MatterEnactmentDate     : logi  NA NA NA NA NA
 #>  $ MatterEnactmentNumber   : chr  "24-323" "24-324" "24-325" "24-338" ...
 #>  $ MatterRequester         : chr  "Dept. of Real Estate" NA NA NA ...
-#>  $ MatterNotes             : chr  NA NA NA NA ...
+#>  $ MatterNotes             : logi  NA NA NA NA NA
 #>  $ MatterVersion           : chr  "0" "0" "0" "0" ...
-#>  $ MatterCost              : logi  NA NA NA NA NA NA ...
+#>  $ MatterCost              : logi  NA NA NA NA NA
 #>  $ MatterText1             : chr  "Voting Session: 1:59 p.m" "2:02 P.M" "1:02 p.m" "12:59 P.M" ...
 #>  $ MatterText2             : chr  "Natawna B. Austin" "Natawna B. Austin" "Natawna B. Austin" "Natawna B. Austin" ...
-#>  $ MatterText3             : logi  NA NA NA NA NA NA ...
-#>  $ MatterText4             : logi  NA NA NA NA NA NA ...
-#>  $ MatterText5             : logi  NA NA NA NA NA NA ...
+#>  $ MatterText3             : logi  NA NA NA NA NA
+#>  $ MatterText4             : logi  NA NA NA NA NA
+#>  $ MatterText5             : logi  NA NA NA NA NA
 #>  $ MatterDate1             : chr  "2024-03-18T00:00:00" "2024-02-27T00:00:00" "2024-02-28T00:00:00" "2024-03-20T00:00:00" ...
-#>  $ MatterDate2             : logi  NA NA NA NA NA NA ...
+#>  $ MatterDate2             : logi  NA NA NA NA NA
 #>  $ MatterEXText1           : chr  "Administration" "Torrence" "Torrence" "Cohen" ...
 #>  $ MatterEXText2           : chr  "Office of the Comptroller" NA NA NA ...
 #>  $ MatterEXText3           : chr  "Department of Real Estate" NA NA NA ...
-#>  $ MatterEXText4           : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXText5           : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXText6           : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXText7           : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXText8           : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXText9           : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXText10          : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXText11          : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXDate1           : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXDate2           : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXDate3           : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXDate4           : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXDate5           : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXDate6           : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXDate7           : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXDate8           : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXDate9           : logi  NA NA NA NA NA NA ...
-#>  $ MatterEXDate10          : logi  NA NA NA NA NA NA ...
-#>  $ MatterAgiloftId         : int  0 0 0 0 0 0 0 0 0 0
+#>  $ MatterEXText4           : logi  NA NA NA NA NA
+#>  $ MatterEXText5           : logi  NA NA NA NA NA
+#>  $ MatterEXText6           : logi  NA NA NA NA NA
+#>  $ MatterEXText7           : logi  NA NA NA NA NA
+#>  $ MatterEXText8           : logi  NA NA NA NA NA
+#>  $ MatterEXText9           : logi  NA NA NA NA NA
+#>  $ MatterEXText10          : logi  NA NA NA NA NA
+#>  $ MatterEXText11          : logi  NA NA NA NA NA
+#>  $ MatterEXDate1           : logi  NA NA NA NA NA
+#>  $ MatterEXDate2           : logi  NA NA NA NA NA
+#>  $ MatterEXDate3           : logi  NA NA NA NA NA
+#>  $ MatterEXDate4           : logi  NA NA NA NA NA
+#>  $ MatterEXDate5           : logi  NA NA NA NA NA
+#>  $ MatterEXDate6           : logi  NA NA NA NA NA
+#>  $ MatterEXDate7           : logi  NA NA NA NA NA
+#>  $ MatterEXDate8           : logi  NA NA NA NA NA
+#>  $ MatterEXDate9           : logi  NA NA NA NA NA
+#>  $ MatterEXDate10          : logi  NA NA NA NA NA
+#>  $ MatterAgiloftId         : int  0 0 0 0 0
 #>  $ MatterReference         : chr  "22-0301" "23-0351" "23-0416" "23-0427" ...
-#>  $ MatterRestrictViewViaWeb: logi  FALSE FALSE FALSE FALSE FALSE FALSE ...
-#>  $ MatterReports           :List of 10
-#>   ..$ : list()
-#>   ..$ : list()
-#>   ..$ : list()
-#>   ..$ : list()
-#>   ..$ : list()
+#>  $ MatterRestrictViewViaWeb: logi  FALSE FALSE FALSE FALSE FALSE
+#>  $ MatterReports           :List of 5
 #>   ..$ : list()
 #>   ..$ : list()
 #>   ..$ : list()
@@ -309,9 +258,14 @@ str(ordinances)
 
 - [Python Legistar
   Scraper](https://github.com/opencivicdata/python-legistar-scraper)
-- [scrapers-us-municipal](https://github.com/opencivicdata/scrapers-us-municipal)
-  (Scrapers for US municipal governments)
+- [scrapers-us-municipal](https://github.com/opencivicdata/scrapers-us-municipal):
+  Scrapers for US municipal governments
 - [Council Data Project](https://councildataproject.org/)
-- [cdp-scrapers](https://councildataproject.org/cdp-scrapers/index.html)
-  (Scratchpad for scraper development and general utilities for the
-  Council Data Project)
+- [cdp-scrapers](https://councildataproject.org/cdp-scrapers/index.html):
+  Scratchpad for scraper development and general utilities for the
+  Council Data Project
+- [legistar-rs](https://github.com/Subzidion/legistar-rs): Rust library
+  to access the Legistar Web API.
+- [civic-scraper](https://github.com/biglocalnews/civic-scraper): Tools
+  for downloading agendas, minutes and other documents produced by local
+  government
