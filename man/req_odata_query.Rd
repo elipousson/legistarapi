@@ -12,8 +12,10 @@ req_odata_query(
   filter = NULL,
   select = NULL,
   orderby = NULL,
+  direction = NULL,
+  count = NULL,
   inlinecount = NULL,
-  .multi = "pipe",
+  .multi = "comma",
   error_call = caller_env()
 )
 }

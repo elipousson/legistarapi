@@ -4,7 +4,7 @@
 \alias{legistar_template}
 \title{Get a Legistar Web API URL GET Template}
 \usage{
-legistar_template(template = "actions", method = "GET", version = 1)
+legistar_template(template = "actions", method = "GET")
 }
 \arguments{
 \item{template}{Template string corresponding to a template endpoint, e.g.

@@ -6,15 +6,17 @@
 \usage{
 legistar(
   ...,
+  template = "actions",
+  client = getOption("legistarapi.client"),
   top = NULL,
   skip = NULL,
   select = NULL,
   filter = NULL,
   orderby = NULL,
+  direction = NULL,
+  count = NULL,
   inlinecount = NULL,
   .multi = "pipe",
-  template = "actions",
-  client = getOption("legistarapi.client"),
   simplifyVector = TRUE,
   n_max = NULL,
   error_call = caller_env()
@@ -23,7 +25,16 @@ legistar(
 \arguments{
 \item{...}{Template variables.}
 
-\item{top, skip}{Passed to \code{\link[httr2:req_url]{httr2::req_url_query()}}}
+\item{template}{A template string which consists of a optional HTTP method
+and a path containing variables labelled like either \verb{:foo} or \code{{foo}}.}
+
+\item{client}{String with Legistar client name. Defaults to
+\code{getOption("legistarapi.client")}.}
+
+\item{top, skip, select, filter, orderby}{Passed to internal \code{\link[=req_odata_query]{req_odata_query()}}
+function.}
+
+\item{count, inlinecount}{Currently unsupported.}
 
 \item{.multi}{Controls what happens when an element of \code{...} is a vector
 containing multiple values:
@@ -37,11 +48,6 @@ containing multiple values:
 If none of these functions work, you can alternatively supply a function
 that takes a character vector and returns a string.}
 
-\item{template}{A template string which consists of a optional HTTP method
-and a path containing variables labelled like either \verb{:foo} or \code{{foo}}.}
-
-\item{client}{String with Legistar client name}
-
 \item{simplifyVector}{Should JSON arrays containing only primitives (i.e.
 booleans, numbers, and strings) be caused to atomic vectors?}
 
@@ -51,6 +57,10 @@ booleans, numbers, and strings) be caused to atomic vectors?}
 running function, e.g. \code{caller_env()}. The function will be
 mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
+
+\item{order}{Default \code{NULL}. Use \code{"asc"} for ascending or \code{"desc"} for
+descending sort order based on \code{orderby} argument. Ignored if \code{orderby} is
+not supplied.}
 }
 \description{
 Review the \href{https://webapi.legistar.com/}{Legistar Web API} documentation for
@@ -58,9 +68,9 @@ more information. This function is a work in progress. As of May 2024, it
 returns all results for any query calling itself recursively.
 }
 \examples{
-legistar(template = "persons", client = "seattle")
+legistar(template = "persons", client = "seattle", top = 5)
 
-legistar(template = "bodies", client = "baltimore")
+legistar(template = "bodies", client = "baltimore", top = 5)
 
 }
 \seealso{

@@ -17,6 +17,6 @@ legistar_clients
 \description{
 A data frame of identified Legistar client sites tested to check if client
 responded to an API request with \code{\link[=legistar_get_bodies]{legistar_get_bodies()}}. Last updated
-2024-03-31.
+2024-05-12.
 }
 \keyword{datasets}
