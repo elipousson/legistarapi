@@ -70,98 +70,52 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://elipousson.github.io/legistarapi/">legistarapi</a></span><span class="op">)</span></span></code></pre></div>
 <p>This easiest way to access Legistar data is using the dedicated functions that correspond to different types of information. For example, list Legistar users for a client using the <code><a href="reference/legis_get_persons.html">legis_get_persons()</a></code> function:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/legis_get_persons.html">legis_get_persons</a></span><span class="op">(</span>client <span class="op">=</span> <span class="st">"seattle"</span>, top <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
-<span><span class="co">#&gt;    PersonId                           PersonGuid   PersonLastModifiedUtc</span></span>
-<span><span class="co">#&gt; 1       120 AB1EC5B5-4AFA-4B70-ADDE-C0ECA2C97FEF 2014-05-27T22:02:36.467</span></span>
-<span><span class="co">#&gt; 2       145 F07E7510-D2B5-4574-8F38-01552AD1B581 2014-05-27T22:02:36.467</span></span>
-<span><span class="co">#&gt; 3       169 2D8E1621-3625-4BAC-BD75-762C720B3085 2014-05-27T22:02:36.467</span></span>
-<span><span class="co">#&gt; 4       173 54718D76-B468-43BF-B935-7266D9261349 2014-05-27T22:02:36.467</span></span>
-<span><span class="co">#&gt; 5       175 02FCAD3D-B104-412C-8566-99184F91BAFB 2014-05-27T22:02:36.467</span></span>
-<span><span class="co">#&gt; 6       177 F53C87FD-BB0A-450F-BA21-C8B872691D0F 2014-05-27T22:02:36.467</span></span>
-<span><span class="co">#&gt; 7       179 783B6BB6-54A6-4571-AD3D-4DB9C0DB3761 2014-05-27T22:02:36.467</span></span>
-<span><span class="co">#&gt; 8       183 D304D3B5-4ADF-4854-BF8A-8FE368533E2C 2014-05-27T22:02:36.467</span></span>
-<span><span class="co">#&gt; 9       184 996E5D3F-C893-426E-83C7-54D063684852 2014-05-27T22:02:36.467</span></span>
-<span><span class="co">#&gt; 10      185 B9D0E861-3EC2-452D-A527-B63164F888FA 2014-05-27T22:02:36.467</span></span>
-<span><span class="co">#&gt;    PersonRowVersion PersonFirstName PersonLastName  PersonFullName</span></span>
-<span><span class="co">#&gt; 1      AAAAAAD1y1A=                        Daystar         Daystar</span></span>
-<span><span class="co">#&gt; 2      AAAAAAArSwM=            View           Only       View Only</span></span>
-<span><span class="co">#&gt; 3      AAAAAAArSwQ=        Legistar         System Legistar System</span></span>
-<span><span class="co">#&gt; 4      AAAAAAEF4+U=             Ian          Smith       Ian Smith</span></span>
-<span><span class="co">#&gt; 5      AAAAAAEIIHs=          Emilia        Sanchez  Emilia Sanchez</span></span>
-<span><span class="co">#&gt; 6      AAAAAAA0ujY=           Julie          Tobin     Julie Tobin</span></span>
-<span><span class="co">#&gt; 7      AAAAAABB7YY=             Jon       Johansen    Jon Johansen</span></span>
-<span><span class="co">#&gt; 8      AAAAAAEAfYM=           Sally        Bagshaw   Sally Bagshaw</span></span>
-<span><span class="co">#&gt; 9      AAAAAAEAfYo=             Tim        Burgess     Tim Burgess</span></span>
-<span><span class="co">#&gt; 10     AAAAAAEB0kw=            Jean         Godden     Jean Godden</span></span>
-<span><span class="co">#&gt;    PersonActiveFlag PersonCanViewFlag PersonUsedSponsorFlag</span></span>
-<span><span class="co">#&gt; 1                 0                 0                     0</span></span>
-<span><span class="co">#&gt; 2                 1                 0                     0</span></span>
-<span><span class="co">#&gt; 3                 1                 0                     0</span></span>
-<span><span class="co">#&gt; 4                 1                 1                     0</span></span>
-<span><span class="co">#&gt; 5                 1                 1                     0</span></span>
-<span><span class="co">#&gt; 6                 1                 1                     0</span></span>
-<span><span class="co">#&gt; 7                 1                 1                     0</span></span>
-<span><span class="co">#&gt; 8                 0                 1                     0</span></span>
-<span><span class="co">#&gt; 9                 0                 1                     0</span></span>
-<span><span class="co">#&gt; 10                0                 1                     0</span></span>
-<span><span class="co">#&gt;                               PersonAddress1 PersonCity1 PersonState1</span></span>
-<span><span class="co">#&gt; 1                                                                    </span></span>
-<span><span class="co">#&gt; 2                                                   &lt;NA&gt;         &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 3                                       &lt;NA&gt;        &lt;NA&gt;         &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 4                                                                    </span></span>
-<span><span class="co">#&gt; 5                                                                    </span></span>
-<span><span class="co">#&gt; 6                                                                    </span></span>
-<span><span class="co">#&gt; 7                                                                    </span></span>
-<span><span class="co">#&gt; 8  Seattle City Hall, 600 Fourth Ave, 2nd fl     Seattle           WA</span></span>
-<span><span class="co">#&gt; 9                                                                    </span></span>
-<span><span class="co">#&gt; 10                                                                   </span></span>
-<span><span class="co">#&gt;    PersonZip1  PersonPhone    PersonFax                PersonEmail</span></span>
-<span><span class="co">#&gt; 1                                            Legistar@granicus.com</span></span>
-<span><span class="co">#&gt; 2        &lt;NA&gt;                                                     </span></span>
-<span><span class="co">#&gt; 3        &lt;NA&gt;         &lt;NA&gt;         &lt;NA&gt;                       &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 4                                            Ian.Smith@seattle.gov</span></span>
-<span><span class="co">#&gt; 5                                       Emilia.Sanchez@seattle.gov</span></span>
-<span><span class="co">#&gt; 6                                          julie.tobin@seattle.gov</span></span>
-<span><span class="co">#&gt; 7                                                 ats@granicus.com</span></span>
-<span><span class="co">#&gt; 8       98104 206-684-8801 206-684-8587  sally.bagshaw@seattle.gov</span></span>
-<span><span class="co">#&gt; 9             206-684-8806 206-684-8587    tim.burgess@seattle.gov</span></span>
-<span><span class="co">#&gt; 10            206-684-8807 206-684-8587    jean.godden@seattle.gov</span></span>
-<span><span class="co">#&gt;                                  PersonWWW PersonAddress2 PersonCity2</span></span>
-<span><span class="co">#&gt; 1                                                                    </span></span>
-<span><span class="co">#&gt; 2                                                    &lt;NA&gt;        &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 3                                     &lt;NA&gt;           &lt;NA&gt;        &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 4                                                                    </span></span>
-<span><span class="co">#&gt; 5                                                                    </span></span>
-<span><span class="co">#&gt; 6                                                                    </span></span>
-<span><span class="co">#&gt; 7                                                                    </span></span>
-<span><span class="co">#&gt; 8  http://www.seattle.gov/council/bagshaw/                           </span></span>
-<span><span class="co">#&gt; 9  http://www.seattle.gov/council/burgess/                           </span></span>
-<span><span class="co">#&gt; 10  http://www.seattle.gov/council/godden/                           </span></span>
-<span><span class="co">#&gt;    PersonState2 PersonZip2 PersonPhone2 PersonFax2 PersonEmail2 PersonWWW2</span></span>
-<span><span class="co">#&gt; 1                                                                         </span></span>
-<span><span class="co">#&gt; 2          &lt;NA&gt;       &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 3          &lt;NA&gt;       &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;</span></span>
-<span><span class="co">#&gt; 4                                                                         </span></span>
-<span><span class="co">#&gt; 5                                                                         </span></span>
-<span><span class="co">#&gt; 6                                                                         </span></span>
-<span><span class="co">#&gt; 7                                                                         </span></span>
-<span><span class="co">#&gt; 8                                                                         </span></span>
-<span><span class="co">#&gt; 9                                                                         </span></span>
-<span><span class="co">#&gt; 10</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/legis_get_persons.html">legis_get_persons</a></span><span class="op">(</span>client <span class="op">=</span> <span class="st">"seattle"</span>, top <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="co">#&gt;   PersonId                           PersonGuid   PersonLastModifiedUtc</span></span>
+<span><span class="co">#&gt; 1      120 AB1EC5B5-4AFA-4B70-ADDE-C0ECA2C97FEF 2014-05-27T22:02:36.467</span></span>
+<span><span class="co">#&gt; 2      145 F07E7510-D2B5-4574-8F38-01552AD1B581 2014-05-27T22:02:36.467</span></span>
+<span><span class="co">#&gt; 3      169 2D8E1621-3625-4BAC-BD75-762C720B3085 2014-05-27T22:02:36.467</span></span>
+<span><span class="co">#&gt; 4      173 54718D76-B468-43BF-B935-7266D9261349 2014-05-27T22:02:36.467</span></span>
+<span><span class="co">#&gt; 5      175 02FCAD3D-B104-412C-8566-99184F91BAFB 2014-05-27T22:02:36.467</span></span>
+<span><span class="co">#&gt;   PersonRowVersion PersonFirstName PersonLastName  PersonFullName</span></span>
+<span><span class="co">#&gt; 1     AAAAAAD1y1A=                        Daystar         Daystar</span></span>
+<span><span class="co">#&gt; 2     AAAAAAArSwM=            View           Only       View Only</span></span>
+<span><span class="co">#&gt; 3     AAAAAAArSwQ=        Legistar         System Legistar System</span></span>
+<span><span class="co">#&gt; 4     AAAAAAEF4+U=             Ian          Smith       Ian Smith</span></span>
+<span><span class="co">#&gt; 5     AAAAAAEIIHs=          Emilia        Sanchez  Emilia Sanchez</span></span>
+<span><span class="co">#&gt;   PersonActiveFlag PersonCanViewFlag PersonUsedSponsorFlag PersonAddress1</span></span>
+<span><span class="co">#&gt; 1                0                 0                     0               </span></span>
+<span><span class="co">#&gt; 2                1                 0                     0               </span></span>
+<span><span class="co">#&gt; 3                1                 0                     0           &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 4                1                 1                     0               </span></span>
+<span><span class="co">#&gt; 5                1                 1                     0               </span></span>
+<span><span class="co">#&gt;   PersonCity1 PersonState1 PersonZip1 PersonPhone PersonFax</span></span>
+<span><span class="co">#&gt; 1                                                          </span></span>
+<span><span class="co">#&gt; 2        &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;                      </span></span>
+<span><span class="co">#&gt; 3        &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;        &lt;NA&gt;      &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 4                                                          </span></span>
+<span><span class="co">#&gt; 5                                                          </span></span>
+<span><span class="co">#&gt;                  PersonEmail PersonWWW PersonAddress2 PersonCity2 PersonState2</span></span>
+<span><span class="co">#&gt; 1      Legistar@granicus.com                                                  </span></span>
+<span><span class="co">#&gt; 2                                                &lt;NA&gt;        &lt;NA&gt;         &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 3                       &lt;NA&gt;      &lt;NA&gt;           &lt;NA&gt;        &lt;NA&gt;         &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 4      Ian.Smith@seattle.gov                                                  </span></span>
+<span><span class="co">#&gt; 5 Emilia.Sanchez@seattle.gov                                                  </span></span>
+<span><span class="co">#&gt;   PersonZip2 PersonPhone2 PersonFax2 PersonEmail2 PersonWWW2</span></span>
+<span><span class="co">#&gt; 1                                                           </span></span>
+<span><span class="co">#&gt; 2       &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 3       &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;         &lt;NA&gt;       &lt;NA&gt;</span></span>
+<span><span class="co">#&gt; 4                                                           </span></span>
+<span><span class="co">#&gt; 5</span></span></code></pre></div>
 <p>The Legistar Web API has at least partial support for the <a href="https://www.odata.org/documentation/odata-version-3-0/odata-version-3-0-core-protocol/" class="external-link">OData Version 3.0</a> URL conventions. Support for these conventions is incomplete but the <code>top</code>, <code>orderby</code>, <code>select</code>, and <code>filter</code> query parameters are supported:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="reference/legis_get_persons.html">legis_get_persons</a></span><span class="op">(</span>client <span class="op">=</span> <span class="st">"seattle"</span>, top <span class="op">=</span> <span class="fl">10</span>, orderby <span class="op">=</span> <span class="st">"PersonFullName"</span>, order <span class="op">=</span> <span class="st">"asc"</span>, select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PersonFirstName"</span>, <span class="st">"PersonLastName"</span>, <span class="st">"PersonFullName"</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="co">#&gt;           PersonFullName PersonLastName PersonFirstName</span></span>
-<span><span class="co">#&gt; 1       Aaron Blumenthal     Blumenthal           Aaron</span></span>
-<span><span class="co">#&gt; 2        Aaron Pritchard      Pritchard           Aaron</span></span>
-<span><span class="co">#&gt; 3           Abel Pacheco        Pacheco            Abel</span></span>
-<span><span class="co">#&gt; 4          Abigail Doerr          Doerr         Abigail</span></span>
-<span><span class="co">#&gt; 5          Adam Schaefer       Schaefer            Adam</span></span>
-<span><span class="co">#&gt; 6        Adam Ziemkowski     Ziemkowski            Adam</span></span>
-<span><span class="co">#&gt; 7  admDepusoy admDepusoy     admDepusoy      admDepusoy</span></span>
-<span><span class="co">#&gt; 8          admGee admGee         admGee          admGee</span></span>
-<span><span class="co">#&gt; 9  admSanchez admSanchez     admSanchez      admSanchez</span></span>
-<span><span class="co">#&gt; 10     admSmith admSmith       admSmith        admSmith</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="reference/legis_get_persons.html">legis_get_persons</a></span><span class="op">(</span>client <span class="op">=</span> <span class="st">"seattle"</span>, top <span class="op">=</span> <span class="fl">5</span>, orderby <span class="op">=</span> <span class="st">"PersonFullName"</span>, order <span class="op">=</span> <span class="st">"asc"</span>, select <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"PersonFirstName"</span>, <span class="st">"PersonLastName"</span>, <span class="st">"PersonFullName"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt;     PersonFullName PersonLastName PersonFirstName</span></span>
+<span><span class="co">#&gt; 1 Aaron Blumenthal     Blumenthal           Aaron</span></span>
+<span><span class="co">#&gt; 2  Aaron Pritchard      Pritchard           Aaron</span></span>
+<span><span class="co">#&gt; 3     Abel Pacheco        Pacheco            Abel</span></span>
+<span><span class="co">#&gt; 4    Abigail Doerr          Doerr         Abigail</span></span>
+<span><span class="co">#&gt; 5    Adam Schaefer       Schaefer            Adam</span></span></code></pre></div>
 <p>The functions starting with <code>legis_get_</code> are wrappers for the lower-level <code><a href="reference/legistar.html">legistar()</a></code> function. Using the <code>template</code> parameter, you can access the same data:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/legistar.html">legistar</a></span><span class="op">(</span>template <span class="op">=</span> <span class="st">"persons"</span>, client <span class="op">=</span> <span class="st">"seattle"</span>, top <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
@@ -237,73 +191,68 @@
 <code class="sourceCode R"><span><span class="va">ordinances</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/legistar.html">legistar</a></span><span class="op">(</span></span>
 <span>  client <span class="op">=</span> <span class="st">"baltimore"</span>,</span>
 <span>  template <span class="op">=</span> <span class="st">"matters"</span>,</span>
-<span>  top <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>  top <span class="op">=</span> <span class="fl">5</span>,</span>
 <span>  filter <span class="op">=</span> <span class="st">"MatterTypeId eq 1"</span>,</span>
 <span>  orderby <span class="op">=</span> <span class="st">"MatterPassedDate"</span>,</span>
 <span>  direction <span class="op">=</span> <span class="st">"desc"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">ordinances</span><span class="op">)</span></span>
-<span><span class="co">#&gt; 'data.frame':    10 obs. of  54 variables:</span></span>
-<span><span class="co">#&gt;  $ MatterId                : int  9269 9380 9548 9570 9577 9584 9585 9591 9602 9650</span></span>
+<span><span class="co">#&gt; 'data.frame':    5 obs. of  54 variables:</span></span>
+<span><span class="co">#&gt;  $ MatterId                : int  9269 9380 9548 9570 9577</span></span>
 <span><span class="co">#&gt;  $ MatterGuid              : chr  "CCF500CC-21E6-4A9F-9248-4532D4CAE9DB" "4BF92EB4-6ECF-451B-AB54-BCE01B3E9AB6" "0B4764EC-F36A-4EC9-BF41-AC41F64AA743" "F19536EC-63D8-4269-BDFF-8A089B770440" ...</span></span>
 <span><span class="co">#&gt;  $ MatterLastModifiedUtc   : chr  "2024-05-07T19:55:56.69" "2024-05-07T19:56:17.353" "2024-05-07T19:56:39.28" "2024-05-07T20:03:07.207" ...</span></span>
 <span><span class="co">#&gt;  $ MatterRowVersion        : chr  "AAAAAACDc9U=" "AAAAAACDc/4=" "AAAAAACDdCM=" "AAAAAACDdlk=" ...</span></span>
 <span><span class="co">#&gt;  $ MatterFile              : chr  "22-0301" "23-0351" "23-0416" "23-0427" ...</span></span>
 <span><span class="co">#&gt;  $ MatterName              : chr  "Sale of Property - 844 Roundview Road" "Rezoning - 1801 to 1807 Bloomingdale Road and 1800 to 1816 North Rosedale Street" "Baltimore City Office of Returning Citizens" "Baltimore Police Department - Trauma-Informed Care Training" ...</span></span>
 <span><span class="co">#&gt;  $ MatterTitle             : chr  "Sale of Property - 844 Roundview Road\r\nFor the purpose of authorizing the Mayor and City Council of Baltimore"| __truncated__ "Rezoning - 1801 to 1807 Bloomingdale Road and 1800 to 1816 North Rosedale Street\r\nFor the purpose of changing"| __truncated__ "Baltimore City Office of Returning Citizens\r\nFor the purpose of establishing a Baltimore City Office of Retur"| __truncated__ "Baltimore Police Department - Trauma-Informed Care Training\r\nFor the purpose of adding the Baltimore Police D"| __truncated__ ...</span></span>
-<span><span class="co">#&gt;  $ MatterTypeId            : int  1 1 1 1 1 1 1 1 1 1</span></span>
+<span><span class="co">#&gt;  $ MatterTypeId            : int  1 1 1 1 1</span></span>
 <span><span class="co">#&gt;  $ MatterTypeName          : chr  "Ordinance" "Ordinance" "Ordinance" "Ordinance" ...</span></span>
-<span><span class="co">#&gt;  $ MatterStatusId          : int  18 18 18 18 18 18 18 18 18 18</span></span>
+<span><span class="co">#&gt;  $ MatterStatusId          : int  18 18 18 18 18</span></span>
 <span><span class="co">#&gt;  $ MatterStatusName        : chr  "Enacted" "Enacted" "Enacted" "Enacted" ...</span></span>
-<span><span class="co">#&gt;  $ MatterBodyId            : int  3 3 3 3 3 3 3 3 3 3</span></span>
+<span><span class="co">#&gt;  $ MatterBodyId            : int  3 3 3 3 3</span></span>
 <span><span class="co">#&gt;  $ MatterBodyName          : chr  "Baltimore City Council" "Baltimore City Council" "Baltimore City Council" "Baltimore City Council" ...</span></span>
 <span><span class="co">#&gt;  $ MatterIntroDate         : chr  "2022-11-21T00:00:00" "2023-02-06T00:00:00" "2023-08-21T00:00:00" "2023-09-18T00:00:00" ...</span></span>
-<span><span class="co">#&gt;  $ MatterAgendaDate        : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterAgendaDate        : logi  NA NA NA NA NA</span></span>
 <span><span class="co">#&gt;  $ MatterPassedDate        : chr  "2024-04-24T00:00:00" "2024-04-24T00:00:00" "2024-04-24T00:00:00" "2024-04-24T00:00:00" ...</span></span>
-<span><span class="co">#&gt;  $ MatterEnactmentDate     : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterEnactmentDate     : logi  NA NA NA NA NA</span></span>
 <span><span class="co">#&gt;  $ MatterEnactmentNumber   : chr  "24-323" "24-324" "24-325" "24-338" ...</span></span>
 <span><span class="co">#&gt;  $ MatterRequester         : chr  "Dept. of Real Estate" NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterNotes             : chr  NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterNotes             : logi  NA NA NA NA NA</span></span>
 <span><span class="co">#&gt;  $ MatterVersion           : chr  "0" "0" "0" "0" ...</span></span>
-<span><span class="co">#&gt;  $ MatterCost              : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterCost              : logi  NA NA NA NA NA</span></span>
 <span><span class="co">#&gt;  $ MatterText1             : chr  "Voting Session: 1:59 p.m" "2:02 P.M" "1:02 p.m" "12:59 P.M" ...</span></span>
 <span><span class="co">#&gt;  $ MatterText2             : chr  "Natawna B. Austin" "Natawna B. Austin" "Natawna B. Austin" "Natawna B. Austin" ...</span></span>
-<span><span class="co">#&gt;  $ MatterText3             : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterText4             : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterText5             : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterText3             : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterText4             : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterText5             : logi  NA NA NA NA NA</span></span>
 <span><span class="co">#&gt;  $ MatterDate1             : chr  "2024-03-18T00:00:00" "2024-02-27T00:00:00" "2024-02-28T00:00:00" "2024-03-20T00:00:00" ...</span></span>
-<span><span class="co">#&gt;  $ MatterDate2             : logi  NA NA NA NA NA NA ...</span></span>
+<span><span class="co">#&gt;  $ MatterDate2             : logi  NA NA NA NA NA</span></span>
 <span><span class="co">#&gt;  $ MatterEXText1           : chr  "Administration" "Torrence" "Torrence" "Cohen" ...</span></span>
 <span><span class="co">#&gt;  $ MatterEXText2           : chr  "Office of the Comptroller" NA NA NA ...</span></span>
 <span><span class="co">#&gt;  $ MatterEXText3           : chr  "Department of Real Estate" NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXText4           : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXText5           : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXText6           : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXText7           : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXText8           : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXText9           : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXText10          : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXText11          : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXDate1           : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXDate2           : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXDate3           : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXDate4           : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXDate5           : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXDate6           : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXDate7           : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXDate8           : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXDate9           : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterEXDate10          : logi  NA NA NA NA NA NA ...</span></span>
-<span><span class="co">#&gt;  $ MatterAgiloftId         : int  0 0 0 0 0 0 0 0 0 0</span></span>
+<span><span class="co">#&gt;  $ MatterEXText4           : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXText5           : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXText6           : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXText7           : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXText8           : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXText9           : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXText10          : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXText11          : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate1           : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate2           : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate3           : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate4           : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate5           : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate6           : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate7           : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate8           : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate9           : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterEXDate10          : logi  NA NA NA NA NA</span></span>
+<span><span class="co">#&gt;  $ MatterAgiloftId         : int  0 0 0 0 0</span></span>
 <span><span class="co">#&gt;  $ MatterReference         : chr  "22-0301" "23-0351" "23-0416" "23-0427" ...</span></span>
-<span><span class="co">#&gt;  $ MatterRestrictViewViaWeb: logi  FALSE FALSE FALSE FALSE FALSE FALSE ...</span></span>
-<span><span class="co">#&gt;  $ MatterReports           :List of 10</span></span>
-<span><span class="co">#&gt;   ..$ : list()</span></span>
-<span><span class="co">#&gt;   ..$ : list()</span></span>
-<span><span class="co">#&gt;   ..$ : list()</span></span>
-<span><span class="co">#&gt;   ..$ : list()</span></span>
-<span><span class="co">#&gt;   ..$ : list()</span></span>
+<span><span class="co">#&gt;  $ MatterRestrictViewViaWeb: logi  FALSE FALSE FALSE FALSE FALSE</span></span>
+<span><span class="co">#&gt;  $ MatterReports           :List of 5</span></span>
 <span><span class="co">#&gt;   ..$ : list()</span></span>
 <span><span class="co">#&gt;   ..$ : list()</span></span>
 <span><span class="co">#&gt;   ..$ : list()</span></span>
@@ -316,10 +265,14 @@
 <ul>
 <li><a href="https://github.com/opencivicdata/python-legistar-scraper" class="external-link">Python Legistar Scraper</a></li>
 <li>
-<a href="https://github.com/opencivicdata/scrapers-us-municipal" class="external-link">scrapers-us-municipal</a> (Scrapers for US municipal governments)</li>
+<a href="https://github.com/opencivicdata/scrapers-us-municipal" class="external-link">scrapers-us-municipal</a>: Scrapers for US municipal governments</li>
 <li><a href="https://councildataproject.org/" class="external-link">Council Data Project</a></li>
 <li>
-<a href="https://councildataproject.org/cdp-scrapers/index.html" class="external-link">cdp-scrapers</a> (Scratchpad for scraper development and general utilities for the Council Data Project)</li>
+<a href="https://councildataproject.org/cdp-scrapers/index.html" class="external-link">cdp-scrapers</a>: Scratchpad for scraper development and general utilities for the Council Data Project</li>
+<li>
+<a href="https://github.com/Subzidion/legistar-rs" class="external-link">legistar-rs</a>: Rust library to access the Legistar Web API.</li>
+<li>
+<a href="https://github.com/biglocalnews/civic-scraper" class="external-link">civic-scraper</a>: Tools for downloading agendas, minutes and other documents produced by local government</li>
 </ul>
 </div>
 </div>

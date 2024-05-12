@@ -88,6 +88,12 @@ and a path containing variables labelled like either <code>:foo</code> or <code>
 function.</p></dd>
 
 
+<dt>direction</dt>
+<dd><p>Default <code>NULL</code>. Use <code>"asc"</code> for ascending or <code>"desc"</code> for
+descending sort order based on <code>orderby</code> argument. Ignored if <code>orderby</code> is
+not supplied.</p></dd>
+
+
 <dt>count, inlinecount</dt>
 <dd><p>Currently unsupported.</p></dd>
 
@@ -116,12 +122,6 @@ booleans, numbers, and strings) be caused to atomic vectors?</p></dd>
 running function, e.g. <code>caller_env()</code>. The function will be
 mentioned in error messages as the source of the error. See the
 <code>call</code> argument of <code><a href="https://rlang.r-lib.org/reference/abort.html" class="external-link">abort()</a></code> for more information.</p></dd>
-
-
-<dt>order</dt>
-<dd><p>Default <code>NULL</code>. Use <code>"asc"</code> for ascending or <code>"desc"</code> for
-descending sort order based on <code>orderby</code> argument. Ignored if <code>orderby</code> is
-not supplied.</p></dd>
 
 </dl></div>
     <div class="section level2">
