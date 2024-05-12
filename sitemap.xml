@@ -19,13 +19,55 @@
     <loc>https://elipousson.github.io/legistarapi/reference/index.html</loc>
   </url>
   <url>
+    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_actions.html</loc>
+  </url>
+  <url>
+    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_bodies.html</loc>
+  </url>
+  <url>
+    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_body_types.html</loc>
+  </url>
+  <url>
+    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_code_sections.html</loc>
+  </url>
+  <url>
+    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_events.html</loc>
+  </url>
+  <url>
+    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_indexes.html</loc>
+  </url>
+  <url>
+    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_matter_indexes.html</loc>
+  </url>
+  <url>
+    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_matter_requesters.html</loc>
+  </url>
+  <url>
+    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_matter_statuses.html</loc>
+  </url>
+  <url>
+    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_matter_types.html</loc>
+  </url>
+  <url>
+    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_matters.html</loc>
+  </url>
+  <url>
+    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_office_records.html</loc>
+  </url>
+  <url>
+    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_persons.html</loc>
+  </url>
+  <url>
+    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_vote_types.html</loc>
+  </url>
+  <url>
     <loc>https://elipousson.github.io/legistarapi/reference/legistar.html</loc>
   </url>
   <url>
     <loc>https://elipousson.github.io/legistarapi/reference/legistar_clients.html</loc>
   </url>
   <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legistar_get.html</loc>
+    <loc>https://elipousson.github.io/legistarapi/reference/legistar_methods.html</loc>
   </url>
   <url>
     <loc>https://elipousson.github.io/legistarapi/reference/legistar_template.html</loc>
