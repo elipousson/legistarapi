@@ -26,6 +26,9 @@ legis_get_event(
   \describe{
     \item{\code{top,skip,select,filter,orderby}}{Passed to internal \code{\link[=req_odata_query]{req_odata_query()}}
 function.}
+    \item{\code{direction}}{Default \code{NULL}. Use \code{"asc"} for ascending or \code{"desc"} for
+descending sort order based on \code{orderby} argument. Ignored if \code{orderby} is
+not supplied.}
     \item{\code{count,inlinecount}}{Currently unsupported.}
     \item{\code{n_max}}{Maximum number of records to return. Currently unsupported.}
     \item{\code{.multi}}{Controls what happens when an element of \code{...} is a vector

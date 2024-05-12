@@ -34,6 +34,10 @@ and a path containing variables labelled like either \verb{:foo} or \code{{foo}}
 \item{top, skip, select, filter, orderby}{Passed to internal \code{\link[=req_odata_query]{req_odata_query()}}
 function.}
 
+\item{direction}{Default \code{NULL}. Use \code{"asc"} for ascending or \code{"desc"} for
+descending sort order based on \code{orderby} argument. Ignored if \code{orderby} is
+not supplied.}
+
 \item{count, inlinecount}{Currently unsupported.}
 
 \item{.multi}{Controls what happens when an element of \code{...} is a vector
@@ -57,10 +61,6 @@ booleans, numbers, and strings) be caused to atomic vectors?}
 running function, e.g. \code{caller_env()}. The function will be
 mentioned in error messages as the source of the error. See the
 \code{call} argument of \code{\link[rlang:abort]{abort()}} for more information.}
-
-\item{order}{Default \code{NULL}. Use \code{"asc"} for ascending or \code{"desc"} for
-descending sort order based on \code{orderby} argument. Ignored if \code{orderby} is
-not supplied.}
 }
 \description{
 Review the \href{https://webapi.legistar.com/}{Legistar Web API} documentation for

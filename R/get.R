@@ -81,6 +81,10 @@ legis_get_body <- function(
 
 #' Get persons from a Legistar site
 #'
+#' See [Adding a New
+#' Person](https://support.granicus.com/s/article/Adding-a-New-Person) for more
+#' information on persons in Legistar.
+#'
 #' @inheritParams legistar
 #' @inheritDotParams legistar -template
 #' @export
