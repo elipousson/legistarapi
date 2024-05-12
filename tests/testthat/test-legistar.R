@@ -1,6 +1,5 @@
 test_that("legistar works", {
-  expect_s3_class(
-    legistar(client = "baltimore", top = 10),
-    "data.frame"
-  )
+  legistar_body <- legistar(client = "baltimore", top = 10)
+  expect_s3_class(legistar_body, "data.frame")
+  expect_identical(nrow(legistar_body), 10)
 })
