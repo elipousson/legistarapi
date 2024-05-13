@@ -11,7 +11,9 @@ Access public data using the Legistar Web API.
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://github.com/elipousson/legistarapi}
   \item \url{https://elipousson.github.io/legistarapi/}
+  \item Report bugs at \url{https://github.com/elipousson/legistarapi/issues}
 }
 
 }

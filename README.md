@@ -13,6 +13,7 @@ MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.or
 
 The goal of legistarapi is to allow access to the [Legistar Web
 API](https://webapi.legistar.com/).
+
 [Legistar](https://granicus.com/solution/govmeetings/legistar/) is
 “agenda and legislative management software for large municipalities and
 counties” supplied by Granicus. According to [promotional
@@ -186,10 +187,15 @@ ordinances <- legistar(
   client = "baltimore",
   template = "matters",
   top = 5,
-  filter = "MatterTypeId eq 1",
+  filter = c(
+    "year(MatterPassedDate) > 2022",
+    "MatterTypeId == 1"
+  ),
   orderby = "MatterPassedDate",
   direction = "desc"
 )
+#> ℹ Converting `filter` to use OData operators: `c("year(MatterPassedDate) gt
+#>   2022", "MatterTypeId eq 1")`
 
 str(ordinances)
 #> 'data.frame':    5 obs. of  54 variables:
@@ -253,6 +259,11 @@ str(ordinances)
 #>   ..$ : list()
 #>   ..$ : list()
 ```
+
+Note that if `{stringr}` is installed the package will automatically
+convert R logical operators contained in the filter string into OData
+logical operators, e.g. “\>” converted to “gt” and “==” converted to
+“eq”. Only logical operators bracketed by spaces are converted.
 
 ## Related projects
 
