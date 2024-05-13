@@ -43,7 +43,14 @@
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="search.json" id="search-input" placeholder="Search for" autocomplete="off">
 </form>
 
-      <ul class="navbar-nav"></ul>
+      <ul class="navbar-nav">
+<li class="nav-item">
+  <a class="external-link nav-link" href="https://github.com/elipousson/legistarapi/" aria-label="github">
+    <span class="fab fa fab fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
 </div>
 
     
@@ -55,7 +62,8 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>The goal of legistarapi is to allow access to the <a href="https://webapi.legistar.com/" class="external-link">Legistar Web API</a>. <a href="https://granicus.com/solution/govmeetings/legistar/" class="external-link">Legistar</a> is “agenda and legislative management software for large municipalities and counties” supplied by Granicus. According to <a href="https://granicus.com/pdfs/product_legistar.pdf" class="external-link">promotional material</a>, Legistar is used by 70% of the largest cities and counties in the U.S.</p>
+<p>The goal of legistarapi is to allow access to the <a href="https://webapi.legistar.com/" class="external-link">Legistar Web API</a>.</p>
+<p><a href="https://granicus.com/solution/govmeetings/legistar/" class="external-link">Legistar</a> is “agenda and legislative management software for large municipalities and counties” supplied by Granicus. According to <a href="https://granicus.com/pdfs/product_legistar.pdf" class="external-link">promotional material</a>, Legistar is used by 70% of the largest cities and counties in the U.S.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -67,7 +75,7 @@
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://elipousson.github.io/legistarapi/">legistarapi</a></span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/elipousson/legistarapi" class="external-link">legistarapi</a></span><span class="op">)</span></span></code></pre></div>
 <p>This easiest way to access Legistar data is using the dedicated functions that correspond to different types of information. For example, list Legistar users for a client using the <code><a href="reference/legis_get_persons.html">legis_get_persons()</a></code> function:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/legis_get_persons.html">legis_get_persons</a></span><span class="op">(</span>client <span class="op">=</span> <span class="st">"seattle"</span>, top <span class="op">=</span> <span class="fl">5</span><span class="op">)</span></span>
@@ -192,10 +200,15 @@
 <span>  client <span class="op">=</span> <span class="st">"baltimore"</span>,</span>
 <span>  template <span class="op">=</span> <span class="st">"matters"</span>,</span>
 <span>  top <span class="op">=</span> <span class="fl">5</span>,</span>
-<span>  filter <span class="op">=</span> <span class="st">"MatterTypeId eq 1"</span>,</span>
+<span>  filter <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>    <span class="st">"year(MatterPassedDate) &gt; 2022"</span>,</span>
+<span>    <span class="st">"MatterTypeId == 1"</span></span>
+<span>  <span class="op">)</span>,</span>
 <span>  orderby <span class="op">=</span> <span class="st">"MatterPassedDate"</span>,</span>
 <span>  direction <span class="op">=</span> <span class="st">"desc"</span></span>
 <span><span class="op">)</span></span>
+<span><span class="co">#&gt; ℹ Converting `filter` to use OData operators: `c("year(MatterPassedDate) gt</span></span>
+<span><span class="co">#&gt;   2022", "MatterTypeId eq 1")`</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/str.html" class="external-link">str</a></span><span class="op">(</span><span class="va">ordinances</span><span class="op">)</span></span>
 <span><span class="co">#&gt; 'data.frame':    5 obs. of  54 variables:</span></span>
@@ -258,6 +271,7 @@
 <span><span class="co">#&gt;   ..$ : list()</span></span>
 <span><span class="co">#&gt;   ..$ : list()</span></span>
 <span><span class="co">#&gt;   ..$ : list()</span></span></code></pre></div>
+<p>Note that if <a href="https://stringr.tidyverse.org" class="external-link">stringr</a> is installed the package will automatically convert R logical operators contained in the filter string into OData logical operators, e.g. “&gt;” converted to “gt” and “==” converted to “eq”. Only logical operators bracketed by spaces are converted.</p>
 </div>
 <div class="section level2">
 <h2 id="related-projects">Related projects<a class="anchor" aria-label="anchor" href="#related-projects"></a>
@@ -276,7 +290,15 @@
 </ul>
 </div>
 </div>
-  </main><aside class="col-md-3"><div class="license">
+  </main><aside class="col-md-3"><div class="links">
+<h2 data-toc-skip>Links</h2>
+<ul class="list-unstyled">
+<li><a href="https://github.com/elipousson/legistarapi/" class="external-link">Browse source code</a></li>
+<li><a href="https://github.com/elipousson/legistarapi/issues" class="external-link">Report a bug</a></li>
+</ul>
+</div>
+
+<div class="license">
 <h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="LICENSE.html">Full license</a></li>
