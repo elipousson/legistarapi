@@ -15,6 +15,7 @@ req_odata_query(
   direction = NULL,
   count = NULL,
   inlinecount = NULL,
+  filter_op = "and",
   .multi = "comma",
   error_call = caller_env()
 )

@@ -13,6 +13,48 @@ legistar_url_parse <- function(url, params = NULL, part = "query") {
   unlist(url_parsed[[part]][params])
 }
 
+#' Match logical operator values
+#' @noRd
+str_replace_odata_ops <- function(string) {
+  if (!is_installed("stringr")) {
+    return(string)
+  }
+
+  ops <- c(
+    "==" = "eq", "!=" = "ne", ">" = "gt", ">=" = "ge",
+    "<" = "lt", "<=" = "le", "&" = "and", "\\|" = "or", "!" = "not"
+  )
+
+  ops <- set_names(
+    paste0(" ", ops, " "),
+    paste0(" ", names(ops), " ")
+  )
+
+  stringr::str_replace_all(
+   string,
+   pattern = ops
+  )
+}
+
+#' Match logical operator values
+#' @noRd
+odata_match_lgl <- function(
+    arg,
+    values = NULL,
+    error_arg = caller_arg(x),
+    error_call = caller_env(),
+    multiple = FALSE) {
+  values <- values %||%
+    c("eq", "ne", "gt", "ge", "lt", "le", "and", "or", "not")
+
+  arg_match(
+    arg,
+    values = values,
+    error_arg = error_arg,
+    error_call = error_call,
+    multiple = multiple
+  )
+}
 
 #' Create a ODATA query using `httr2::req_url_query`
 #'
@@ -37,10 +79,35 @@ req_odata_query <- function(
     direction = NULL,
     count = NULL,
     inlinecount = NULL,
+    filter_op = "and",
     .multi = "comma",
     error_call = caller_env()) {
+
+  # Validate inputs
   check_string(orderby, allow_empty = FALSE, allow_null = TRUE, call = error_call)
   check_character(select, allow_null = TRUE, call = error_call)
+  check_number_whole(top, allow_null = TRUE, call = error_call)
+  check_number_whole(skip, allow_null = TRUE, call = error_call)
+
+  if (!is.null(filter)) {
+    check_character(filter, call = error_call)
+    init_filter <- filter
+    filter <- str_replace_odata_ops(filter)
+
+    if (!identical(filter, init_filter)) {
+      cli::cli_bullets(
+        c(
+          "i" = "Converting {.arg filter} to use OData operators:
+          {.code {deparse(substitute(filter))}}")
+      )
+    }
+  }
+
+  # Combine filter arguments with operator
+  if (length(filter) > 1) {
+    filter_op <- odata_match_lgl(filter_op, error_call = error_call)
+    filter <- paste0("(", filter, ")", collapse = paste0(" ", filter_op, " "))
+  }
 
   if (!is.null(direction)) {
     direction <- arg_match0(direction, c("asc", "desc"), error_call = error_call)
