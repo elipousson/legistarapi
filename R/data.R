@@ -1,7 +1,7 @@
 #' Legistar Client Reference
 #'
 #' A data frame of identified Legistar client sites tested to check if client
-#' responded to an API request with [legistar_get_bodies()]. Last updated
+#' responded to an API request with [legis_get_bodies()]. Last updated
 #' 2024-05-12.
 #'
 #' @format A data frame with 286 rows and 2 variables:
