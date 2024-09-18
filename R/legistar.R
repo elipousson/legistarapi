@@ -41,7 +41,7 @@ str_replace_odata_ops <- function(string) {
 odata_match_lgl <- function(
     arg,
     values = NULL,
-    error_arg = caller_arg(x),
+    error_arg = caller_arg(arg),
     error_call = caller_env(),
     multiple = FALSE) {
   values <- values %||%
@@ -253,6 +253,7 @@ resp_legistar <- function(
 #'
 #' @export
 #' @importFrom rlang list2
+#' @importFrom purrr list_rbind
 legistar <- function(...,
                      template = "actions",
                      client = getOption("legistarapi.client"),
