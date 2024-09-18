@@ -9,7 +9,7 @@ client_responses <- purrr::map(
   clients_list,
   \(x) {
     rlang::try_fetch(
-      legistar_get_bodies(client = x),
+      legis_get_bodies(client = x),
       error = function(cnd) {
         return(NA_character_)
       }
