@@ -11,7 +11,10 @@ Parse a Legistar URL and return an ID query parameter
 }
 \examples{
 
-url <- "https://baltimore.legistar.com/LegislationDetail.aspx?ID=6555833&GUID=693FE27B-A165-480F-AD19-56784438224B&Options=ID|Text|&Search="
+url <- paste0(
+  "https://baltimore.legistar.com/",
+  "LegislationDetail.aspx?ID=6555833&GUID=693FE27B-A165-480F-AD19-56784438224B"
+)
 
 legistar_url_id(url)
 

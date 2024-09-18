@@ -31,8 +31,8 @@ str_replace_odata_ops <- function(string) {
   )
 
   stringr::str_replace_all(
-   string,
-   pattern = ops
+    string,
+    pattern = ops
   )
 }
 
@@ -82,7 +82,6 @@ req_odata_query <- function(
     filter_op = "and",
     .multi = "comma",
     error_call = caller_env()) {
-
   # Validate inputs
   check_string(orderby, allow_empty = FALSE, allow_null = TRUE, call = error_call)
   check_character(select, allow_null = TRUE, call = error_call)
@@ -98,7 +97,8 @@ req_odata_query <- function(
       cli::cli_bullets(
         c(
           "i" = "Converting {.arg filter} to use OData operators:
-          {.code {deparse(substitute(filter))}}")
+          {.code {deparse(substitute(filter))}}"
+        )
       )
     }
   }
@@ -155,10 +155,14 @@ req_odata_query <- function(
 #' @keywords internal
 #' @examples
 #'
-#' url <- "https://baltimore.legistar.com/LegislationDetail.aspx?ID=6555833&GUID=693FE27B-A165-480F-AD19-56784438224B&Options=ID|Text|&Search="
+#' url <- paste0(
+#'   "https://baltimore.legistar.com/",
+#'   "LegislationDetail.aspx?ID=6555833&GUID=693FE27B-A165-480F-AD19-56784438224B"
+#' )
 #'
 #' legistar_url_id(url)
 #'
+#' @export
 legistar_url_id <- function(url) {
   legistar_url_parse(url, "ID")
 }
