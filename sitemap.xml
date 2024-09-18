@@ -1,96 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/404.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/LICENSE.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/index.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_actions.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_bodies.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_body_types.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_code_sections.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_events.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_indexes.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_matter_indexes.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_matter_requesters.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_matter_statuses.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_matter_types.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_matters.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_office_records.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_persons.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legis_get_vote_types.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legistar.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legistar_clients.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legistar_methods.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legistar_template.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legistar_url_id.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/legistarapi-package.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/req_legistar.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/req_odata_query.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/request_legistar.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/resp_legistar.html</loc>
-  </url>
-  <url>
-    <loc>https://elipousson.github.io/legistarapi/reference/set_legistar_client.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://elipousson.github.io/legistarapi/404.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/LICENSE-text.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/LICENSE.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/authors.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/index.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/index.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legis_get_actions.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legis_get_bodies.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legis_get_body_types.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legis_get_code_sections.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legis_get_events.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legis_get_indexes.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legis_get_matter_indexes.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legis_get_matter_requesters.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legis_get_matter_statuses.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legis_get_matter_types.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legis_get_matters.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legis_get_office_records.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legis_get_persons.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legis_get_vote_types.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legistar.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legistar_clients.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legistar_methods.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legistar_template.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legistar_url_id.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/legistarapi-package.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/req_legistar.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/req_odata_query.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/request_legistar.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/resp_legistar.html</loc></url>
+<url><loc>https://elipousson.github.io/legistarapi/reference/set_legistar_client.html</loc></url>
 </urlset>
+
